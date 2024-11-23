@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
-import API from "./api/api"; // Import API helper
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AppointmentsPage from "./pages/AppointmentsPage"; // Import halaman janji temu
 
 function App() {
-    const [message, setMessage] = useState("");
-
-    useEffect(() => {
-        // Lakukan request ke backend
-        API.get("/")
-            .then((response) => {
-                setMessage(response.data.message); // Set response message
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
-    }, []);
-
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <h1 className="text-2xl font-bold">{message || "Loading..."}</h1>
-        </div>
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<AppointmentsPage />} />
+                    {/* Route lainnya jika ada halaman lain */}
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

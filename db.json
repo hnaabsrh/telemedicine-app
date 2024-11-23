@@ -1,0 +1,11 @@
+{
+    "doctors": [
+      { "id": 1, "name": "Dr. John Doe" },
+      { "id": 2, "name": "Dr. Jane Smith" }
+    ],
+    "appointments": [
+      { "id": 1, "patient_id": "101", "doctor_id": "1", "appointment_date": "2024-11-24T10:00" },
+      { "id": 2, "patient_id": "102", "doctor_id": "2", "appointment_date": "2024-11-25T11:30" }
+    ]
+  }
+  

@@ -1,9 +1,37 @@
-import axios from 'axios';
+const API = {
+    get: async (url) => {
+        const response = await fetch(`http://localhost:4000${url}`);
+        return response.json();
+    },
 
-axios.get('http://localhost:4000')  // Ganti port dengan 4000
-  .then(response => {
-    console.log(response.data); // Tampilkan hasil dari backend
-  })
-  .catch(error => {
-    console.error("Error fetching data:", error);
-  });
+    getDoctors: async () => {
+        return API.get("/doctors");
+    },
+
+    createAppointment: async (data) => {
+        const response = await fetch("http://localhost:4000/appointments", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        return response.json();
+    },
+
+    updateAppointment: async (id, data) => {
+        const response = await fetch(`http://localhost:4000/appointments/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        return response.json();
+    },
+
+    deleteAppointment: async (id) => {
+        const response = await fetch(`http://localhost:4000/appointments/${id}`, {
+            method: "DELETE",
+        });
+        return response.json();
+    },
+};
+
+export default API;
